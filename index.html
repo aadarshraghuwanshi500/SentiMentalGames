@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentimental Games | Game Dev & Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Dark Theme Variables */
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: #1a2235;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #fa5b8d; /* A vibrant pink/red accent */
+            --accent-glow: rgba(250, 91, 141, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            background: radial-gradient(circle at center, #1a2235 0%, #0b0f19 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+            background-color: #ff729f;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-muted);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            color: var(--accent-color);
+        }
+
+        /* Grid Layouts */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Video Embed Placeholder for Shorts */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* Aspect ratio for Shorts (9:16) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            background-color: var(--surface-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Keep simple for mobile, can add hamburger menu later */
+            }
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Sentimental<span>Games</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#games">My Games</a>
+            <a href="#youtube">YouTube</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Crafting Worlds. <br><span>Sharing the Journey.</span></h1>
+        <p>I'm an indie game developer documenting my process, designing games, and creating content for fellow developers and gamers alike.</p>
+        <div>
+            <a href="https://sentimentalgames.itch.io/" target="_blank" class="btn btn-primary">Play My Games</a>
+            <a href="#youtube" class="btn btn-secondary">Watch Devlogs</a>
+        </div>
+    </section>
+
+    <section id="games">
+        <h2 class="section-title">Play <span>My Games</span></h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Latest Release</h3>
+                <p>Check out my newest project over on itch.io. Built from the ground up and documented on my channel.</p>
+                <a href="https://sentimentalgames.itch.io/" target="_blank" class="btn btn-primary">View on Itch.io</a>
+            </div>
+            
+            <div class="card">
+                <h3>Game Jam Title</h3>
+                <p>A smaller, experimental project exploring unique mechanics and art styles. Free to play in your browser!</p>
+                <a href="https://sentimentalgames.itch.io/" target="_blank" class="btn btn-primary">View on Itch.io</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="youtube" style="background-color: var(--surface-color);">
+        <h2 class="section-title">Game Dev <span>Shorts & Videos</span></h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>How I Code Movement</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Level Design Tricks</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Publishing to Itch.io</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Sentimental<span>Games</span></h2>
+        <p style="margin-top: 1rem; color: var(--text-muted);">© 2026 Sentimental Games. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
